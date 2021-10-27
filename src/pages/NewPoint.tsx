@@ -1,10 +1,9 @@
+import dynamic from "next/dynamic";
 import { Button } from "@chakra-ui/button";
 import { Flex, HStack, Text, VStack } from "@chakra-ui/layout";
-import { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { Input } from "../components/molecules/Input";
 
-import dynamic from "next/dynamic";
 const Map = dynamic(() => import("../components/molecules/Map"), {
   ssr: false,
 });
@@ -50,7 +49,7 @@ export const NewPoint = () => {
                 Address
               </Text>
 
-              <Flex w="full" h="30vh">
+              <Flex w="full" h="40vh">
                 <Map />
               </Flex>
 
