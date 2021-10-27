@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Router from "next/router";
 import { Button } from "@chakra-ui/button";
 import { Flex, HStack, Text, VStack } from "@chakra-ui/layout";
 import { FiArrowLeft } from "react-icons/fi";
@@ -10,14 +11,31 @@ const Map = dynamic(() => import("../components/molecules/Map"), {
 
 import { AppTemplate } from "../components/Templates/AppTemplate";
 import { useGetCurrentPosition } from "../hooks/useGetCurrentPosition";
+import { useState } from "react";
+import { LeafletMouseEvent } from "leaflet";
 
 export const NewPoint = () => {
   const { coords } = useGetCurrentPosition();
 
+  console.log(coords);
+
+  const [formData, setFormData] = useState({ latitude: 0, longitude: 0 });
+
+  const onMapClick = (event: LeafletMouseEvent) => {
+    const { lat, lng } = event.latlng;
+    console.log(event);
+    alert("click");
+  };
+
   return (
     <AppTemplate
       action={
-        <Button variant="ghost" colorScheme="green" leftIcon={<FiArrowLeft />}>
+        <Button
+          variant="ghost"
+          onClick={() => Router.push("/")}
+          colorScheme="green"
+          leftIcon={<FiArrowLeft />}
+        >
           Go Back
         </Button>
       }

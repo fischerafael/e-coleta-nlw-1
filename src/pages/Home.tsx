@@ -1,4 +1,5 @@
-import { HStack, Image, VStack, Text, Button } from "@chakra-ui/react";
+import Router from "next/router";
+import { Image, VStack, Text, Button } from "@chakra-ui/react";
 import { FiLogIn } from "react-icons/fi";
 import { AppTemplate } from "../components/Templates/AppTemplate";
 
@@ -33,6 +34,7 @@ export const Home = () => {
               colorScheme="green"
               size="lg"
               p="8"
+              onClick={() => Router.push("/new-point")}
             >
               Register a collection point
             </Button>

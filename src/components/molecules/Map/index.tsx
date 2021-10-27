@@ -1,24 +1,27 @@
-import { MapContainer, Marker, Popup } from "react-leaflet";
+import { LeafletMouseEvent } from "leaflet";
+import { useEffect } from "react";
+import { MapContainer, MapContainerProps, Marker, Popup } from "react-leaflet";
 import { TileLayer } from "./TileLayer";
 
-interface Props {
+interface Props extends MapContainerProps {
   latitude: number;
   longitude: number;
 }
 
-export const Map = ({ latitude = 0, longitude = 0 }: Props) => {
+export const Map = ({ latitude, longitude, ...props }: Props) => {
+  useEffect(() => {}, []);
+
   return (
     <MapContainer
       center={[latitude, longitude]}
-      zoom={13}
+      zoom={12}
       scrollWheelZoom={false}
       style={{ width: "100%", height: "100%" }}
+      {...props}
     >
       <TileLayer />
-      <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+      <Marker position={[latitude, longitude]}>
+        <Popup>You are here!</Popup>
       </Marker>
     </MapContainer>
   );

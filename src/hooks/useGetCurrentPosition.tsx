@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+interface CoordsProps {
+  latitude: number;
+  longitude: number;
+}
 
 export const useGetCurrentPosition = () => {
-  const [coords, setCoords] = useState({ latitude: 0, longitude: 0 });
+  const { asPath } = useRouter();
+
+  const [coords, setCoords] = useState<CoordsProps>({
+    latitude: 0,
+    longitude: 0,
+  });
 
   useEffect(() => {
-    const coords = navigator.geolocation.getCurrentPosition((pos) => {
+    navigator.geolocation.getCurrentPosition((pos) => {
       const { latitude, longitude } = pos.coords;
       setCoords({ latitude, longitude });
     });
-
-    console.log(coords);
-  }, []);
+  }, [asPath]);
 
   return { coords };
 };
