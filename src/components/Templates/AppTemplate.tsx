@@ -19,7 +19,7 @@ export const AppTemplate = ({ content, action }: Props) => {
       px="4"
     >
       <HStack
-        h="20vh"
+        minH="20vh"
         w="full"
         maxW="container.md"
         align="center"
@@ -36,6 +36,7 @@ export const AppTemplate = ({ content, action }: Props) => {
         maxW="container.md"
         align="center"
         justify="center"
+        overflowY="auto"
       >
         {content}
       </HStack>

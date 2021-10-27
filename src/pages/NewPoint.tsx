@@ -1,6 +1,14 @@
 import { Button } from "@chakra-ui/button";
-import { HStack, Text, VStack } from "@chakra-ui/layout";
+import { Flex, HStack, Text, VStack } from "@chakra-ui/layout";
+import { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
+import { Input } from "../components/molecules/Input";
+
+import dynamic from "next/dynamic";
+const Map = dynamic(() => import("../components/molecules/Map"), {
+  ssr: false,
+});
+
 import { AppTemplate } from "../components/Templates/AppTemplate";
 
 export const NewPoint = () => {
@@ -12,7 +20,7 @@ export const NewPoint = () => {
         </Button>
       }
       content={
-        <VStack w="full" h="full" overflowY="auto">
+        <VStack w="full" h="full" py="4" overflowY="auto">
           <VStack
             as="form"
             maxW="container.sm"
@@ -27,13 +35,32 @@ export const NewPoint = () => {
               Collection Point Register
             </Text>
 
-            <Text fontSize="xl" fontWeight="bold">
-              Data
-            </Text>
+            <VStack w="full" align="flex-start" spacing="4">
+              <Text fontSize="xl" fontWeight="bold">
+                Data
+              </Text>
 
-            <Text fontSize="xl" fontWeight="bold">
-              Address
-            </Text>
+              <Input label="Entity Name" />
+              <Input label="Email" />
+              <Input label="WhatsApp" />
+            </VStack>
+
+            <VStack w="full" align="flex-start" spacing="4">
+              <Text fontSize="xl" fontWeight="bold">
+                Address
+              </Text>
+
+              <Flex w="full" h="30vh">
+                <Map />
+              </Flex>
+
+              <HStack w="full" spacing="8">
+                <Input label="Number" />
+                <Input label="City" />
+              </HStack>
+
+              <Input label="State" />
+            </VStack>
 
             <HStack w="full" justify="space-between">
               <Text fontSize="xl" fontWeight="bold">
