@@ -1,18 +1,20 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, Marker, Popup } from "react-leaflet";
+import { TileLayer } from "./TileLayer";
 
-const mapBoxAPIToken = process.env.NEXT_PUBLIC_MAP_BOX;
+interface Props {
+  latitude: number;
+  longitude: number;
+}
 
-const tileLayerUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${mapBoxAPIToken}`;
-
-export const Map = () => {
+export const Map = ({ latitude = 0, longitude = 0 }: Props) => {
   return (
     <MapContainer
-      center={[51.505, -0.09]}
+      center={[latitude, longitude]}
       zoom={13}
       scrollWheelZoom={false}
       style={{ width: "100%", height: "100%" }}
     >
-      <TileLayer url={tileLayerUrl} />
+      <TileLayer />
       <Marker position={[51.505, -0.09]}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.

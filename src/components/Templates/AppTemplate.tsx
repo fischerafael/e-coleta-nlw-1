@@ -37,6 +37,18 @@ export const AppTemplate = ({ content, action }: Props) => {
         align="center"
         justify="center"
         overflowY="auto"
+        css={{
+          "&::-webkit-scrollbar": {
+            width: "4px",
+          },
+          "&::-webkit-scrollbar-track": {
+            width: "6px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "white",
+            borderRadius: "24px",
+          },
+        }}
       >
         {content}
       </HStack>

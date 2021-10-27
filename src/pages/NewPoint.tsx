@@ -9,8 +9,11 @@ const Map = dynamic(() => import("../components/molecules/Map"), {
 });
 
 import { AppTemplate } from "../components/Templates/AppTemplate";
+import { useGetCurrentPosition } from "../hooks/useGetCurrentPosition";
 
 export const NewPoint = () => {
+  const { coords } = useGetCurrentPosition();
+
   return (
     <AppTemplate
       action={
@@ -19,7 +22,7 @@ export const NewPoint = () => {
         </Button>
       }
       content={
-        <VStack w="full" h="full" py="4" overflowY="auto">
+        <VStack w="full" h="full">
           <VStack
             as="form"
             maxW="container.sm"
@@ -27,7 +30,7 @@ export const NewPoint = () => {
             bg="white"
             shadow="sm"
             align="flex-start"
-            p="8"
+            p="16"
             spacing="8"
           >
             <Text fontSize="2xl" fontWeight="bold">
@@ -50,7 +53,7 @@ export const NewPoint = () => {
               </Text>
 
               <Flex w="full" h="40vh">
-                <Map />
+                <Map latitude={coords.latitude} longitude={coords.longitude} />
               </Flex>
 
               <HStack w="full" spacing="8">
