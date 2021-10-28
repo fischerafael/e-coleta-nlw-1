@@ -23,8 +23,14 @@
     "react-leaflet": "^3.2.2",
     "typescript": "^4.4.4"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "devDependencies": {
     "@types/leaflet": "^1.7.5",
+    "@types/react-leaflet": "^2.8.2",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.0"
   }

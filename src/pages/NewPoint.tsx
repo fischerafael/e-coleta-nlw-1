@@ -10,23 +10,10 @@ const Map = dynamic(() => import("../components/molecules/Map"), {
 });
 
 import { AppTemplate } from "../components/Templates/AppTemplate";
-import { useGetCurrentPosition } from "../hooks/useGetCurrentPosition";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LeafletMouseEvent } from "leaflet";
 
 export const NewPoint = () => {
-  const { coords } = useGetCurrentPosition();
-
-  console.log(coords);
-
-  const [formData, setFormData] = useState({ latitude: 0, longitude: 0 });
-
-  const onMapClick = (event: LeafletMouseEvent) => {
-    const { lat, lng } = event.latlng;
-    console.log(event);
-    alert("click");
-  };
-
   return (
     <AppTemplate
       action={
@@ -71,7 +58,7 @@ export const NewPoint = () => {
               </Text>
 
               <Flex w="full" h="40vh">
-                <Map latitude={coords.latitude} longitude={coords.longitude} />
+                <Map />
               </Flex>
 
               <HStack w="full" spacing="8">
